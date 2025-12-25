@@ -5,6 +5,19 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <style>body{background:#F2F0F0;font-family:Inter,Helvetica,Arial,sans-serif}</style>
+        <script>
+            (function(){
+                try {
+                    // Prevent direct access: only allow if sessionStorage flag is present.
+                    if (sessionStorage.getItem('allow_commissions') !== '1') {
+                        window.location.replace('index.html');
+                    }
+                } catch (e) {
+                    // On any error (e.g., disabled storage) fall back to redirect.
+                    try { window.location.replace('index.html'); } catch (_) {}
+                }
+            })();
+        </script>
     </head>
     <body class="is-loading">
         <div class="site-wrapper">
