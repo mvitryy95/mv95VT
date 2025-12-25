@@ -2038,6 +2038,31 @@
         staggerSelector: ':scope > li',
         replay: false
     });
+    // Background protection: block context menu and dragstart on non-interactive areas
+    (function(){
+        function isInteractive(el){
+            return el && (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.closest && el.closest('a,button,input,textarea,select'));
+        }
+
+        document.addEventListener('contextmenu', function(e){
+            try{
+                var t = e.target;
+                if (!isInteractive(t)) {
+                    e.preventDefault();
+                }
+            }catch(ignore){}
+        }, false);
+
+        document.addEventListener('dragstart', function(e){
+            try{
+                var t = e.target;
+                if (!isInteractive(t)) {
+                    e.preventDefault();
+                }
+            }catch(ignore){}
+        }, false);
+    })();
+
     ready.run();
 }
 )();
