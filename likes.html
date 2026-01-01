@@ -133,58 +133,37 @@
                 var src = frame.dataset.iframeSrc;
                 function loadIframe() {
                     if (!src) return;
-                    // Probe a small YouTube endpoint to detect blocking (generate_204) using an Image
-                    var probeUrl = 'https://www.youtube-nocookie.com/generate_204';
-                    var probeImg = new Image();
-                    var probeTimedOut = false;
-                    var probeTimer = setTimeout(function() { probeTimedOut = true; probeImg.src = ''; probeImg.onerror = null; probeImg.onload = null; }, 1800);
+                    // Directly insert iframe on user interaction
+                    var iframe = document.createElement('iframe');
+                    iframe.setAttribute('width','560');
+                    iframe.setAttribute('height','315');
+                    iframe.setAttribute('src', src);
+                    iframe.setAttribute('title','YouTube video player');
+                    iframe.setAttribute('frameborder','0');
+                    iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                    iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+                    iframe.setAttribute('allowfullscreen','');
 
-                    probeImg.onload = function() {
-                        clearTimeout(probeTimer);
-                        // Not blocked: insert iframe
-                        insertIframe();
-                    };
-                    probeImg.onerror = function() {
-                        clearTimeout(probeTimer);
-                        // Blocked: open YouTube in a new tab instead of embedding
-                        console.warn('YouTube requests appear blocked by client; opening video in new tab.');
-                        window.open('https://youtu.be/JHP4QuxV1uA', '_blank', 'noopener');
-                    };
-                    // Start probe
-                    try { probeImg.src = probeUrl + '?_=' + Date.now(); } catch (e) { clearTimeout(probeTimer); window.open('https://youtu.be/JHP4QuxV1uA', '_blank', 'noopener'); }
+                    var fallback = document.createElement('div');
+                    fallback.style.marginTop = '.5rem';
+                    fallback.style.fontSize = '.95rem';
+                    fallback.style.display = 'none';
+                    fallback.innerHTML = '<a href="https://youtu.be/JHP4QuxV1uA" target="_blank" rel="noopener">Open video on YouTube</a>';
 
-                    function insertIframe() {
-                        var iframe = document.createElement('iframe');
-                        iframe.setAttribute('width','560');
-                        iframe.setAttribute('height','315');
-                        iframe.setAttribute('src', src);
-                        iframe.setAttribute('title','YouTube video player');
-                        iframe.setAttribute('frameborder','0');
-                        iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-                        iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-                        iframe.setAttribute('allowfullscreen','');
+                    frame.innerHTML = '';
+                    frame.appendChild(iframe);
+                    frame.parentNode.insertBefore(fallback, frame.nextSibling);
 
-                        var fallback = document.createElement('div');
-                        fallback.style.marginTop = '.5rem';
-                        fallback.style.fontSize = '.95rem';
-                        fallback.style.display = 'none';
-                        fallback.innerHTML = '<a href="https://youtu.be/JHP4QuxV1uA" target="_blank" rel="noopener">Open video on YouTube</a>';
+                    var loaded = false;
+                    var onLoad = function() { loaded = true; fallback.style.display = 'none'; iframe.removeEventListener('load', onLoad); };
+                    iframe.addEventListener('load', onLoad);
 
-                        frame.innerHTML = '';
-                        frame.appendChild(iframe);
-                        frame.parentNode.insertBefore(fallback, frame.nextSibling);
-
-                        var loaded = false;
-                        var onLoad = function() { loaded = true; fallback.style.display = 'none'; iframe.removeEventListener('load', onLoad); };
-                        iframe.addEventListener('load', onLoad);
-
-                        setTimeout(function() {
-                            if (!loaded) {
-                                fallback.style.display = 'block';
-                                console.warn('YouTube embed appears blocked by client; showing fallback link.');
-                            }
-                        }, 2500);
-                    }
+                    setTimeout(function() {
+                        if (!loaded) {
+                            fallback.style.display = 'block';
+                            console.warn('YouTube embed appears blocked by client; showing fallback link.');
+                        }
+                    }, 2500);
                 }
 
                 if (btn) {
