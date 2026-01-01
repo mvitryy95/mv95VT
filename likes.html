@@ -129,7 +129,7 @@
                 // Lazy-load iframe only after user interaction to avoid blocked network requests
                 var frame = document.querySelector('#video01 .frame');
                 if (!frame) return;
-                var btn = frame.querySelector('.video-play-button');
+                var btn = frame.querySelector('.player.thumbnail'); // Changed to select the thumbnail image
                 var src = frame.dataset.iframeSrc;
                 function loadIframe() {
                     if (!src) return;
@@ -187,7 +187,10 @@
                     }
                 }
 
-                btn.addEventListener('click', function(e){ e.preventDefault(); loadIframe(); });
+                if (btn) {
+                    btn.addEventListener('click', function(e){ e.preventDefault(); loadIframe(); });
+                    btn.addEventListener('touchstart', function(e){ e.preventDefault(); loadIframe(); }); // Added for mobile touch support
+                }
                 frame.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadIframe(); } });
             })();
         </script>
