@@ -233,12 +233,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="n05" role="button">
+                                <a href="commissions.html" class="n05" role="button">
                                     <svg aria-labelledby="buttons02-icon-5-title">
                                         <title id="buttons02-icon-5-title">Upload</title>
                                         <use xlink:href="#icon-8b71ab7fc361c35502064782b824be4f"></use>
                                     </svg>
-                                    <span class="label">Commission Closed for the public</span>
+                                    <span class="label">Commission Open</span>
                                 </a>
                             </li>
                             <li>
@@ -263,5 +263,10 @@
             </div>
         </div>
         <script src="assets/js/common.js"></script>
+        <!-- gotta set the flag to 1 since comms are open-->
+        <script>
+            var commsOpen = 1;
+            sessionStorage.setItem('allow_commissions', '1');
+        </script>
     </body>
 </html>
