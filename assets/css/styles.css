@@ -461,7 +461,7 @@ body.is-instant::after {
 }
 
 .image-component.instance-3 {
-    text-align: left;
+    text-align: center;
 }
 
 .image-component.instance-3 > .frame {
@@ -1801,6 +1801,8 @@ body.is-instant::after {
 .container-component.instance-3 > .wrapper > .inner > :nth-child(2) {
     width: calc(50% + (var(--gutters) / 2));
 }
+
+
 
 .divider-component {
     align-items: center;
@@ -3317,4 +3319,8 @@ body.is-instant::after {
     .table-component.instance-1 td {
         font-size: 0.875em;
     }
+}
+
+#commissions-section > div.container-component.instance-3:nth-of-type(2) .image-component.instance-3 {
+    text-align: center;
 }

@@ -5,11 +5,12 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <style>body{background:#F2F0F0;font-family:Inter,Helvetica,Arial,sans-serif}</style>
+        <link rel="stylesheet" href="assets/css/styles.css">
         <script>
             (function(){
                 try {
                     // Prevent direct access: only allow if sessionStorage flag is present.
-                    if (sessionStorage.getItem('allow_commissions') !== '1') {
+                    if (sessionStorage.getItem('allow_commissions') !== '1') { //to allow access, you must first visit the index.html page, which sets this flag in sessionStorage
                         window.location.replace('index.html');
                     }
                 } catch (e) {
@@ -20,6 +21,11 @@
         </script>
     </head>
     <body class="is-loading">
+       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="icon-fe5d5fdb64e50b34c3e536f93a94c91e" viewBox="0 0 40 40">
+                <path d="M19.5,7l2.3,2.3c.4,0,.4,1,0,1.4l-6.7,6.7h18.4c.5,0,1,.4,1,1v3.2c0,.5-.4,1-1,1H15.1s6.8,6.8,6.8,6.8c.4,0,.4,1,0,1.4l-2.3,2.3c-.4,0-1,0-1.4,0L5.8,20.8c-.4-.4-.4-1,0-1.4L18.1,7.1c.4-.4,1-.4,1.4,0Z"/>
+            </symbol>
+        </svg>
         <div class="site-wrapper">
             <div class="site-main">
                 <div class="inner">
@@ -35,8 +41,9 @@
                                     <p>
                                         <em>
                                             You can DM me on <a href="https://www.instagram.com/mvitry_95/">Instagram</a>
-                                            , <a href="https://discord.gg/fvpewKg">Discord</a>
-                                            or you can go on my <a href="https://ko-fi.com/mvitry95/commissions">Ko-fi commission page</a>
+                                            , <a href="https://discord.gg/fvpewKg">Discord</a> (my id is mvitry95 for DMs, but <b>PLEASE ALWAYS</b> include your commission request in the message request, otherwise I will not respond thinking you're spamming me)
+                                            or you can go to my <a href="https://ko-fi.com/mvitry95/commissions">Ko-fi commission page</a>. 
+                                            
                                         </em>
                                     </p>
                                 </li>
@@ -48,21 +55,35 @@
                                     <div>
                                         <div id="image02" class="image-component instance-2" data-position="left">
                                             <span class="frame deferred">
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCA2MDAgNjAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI%2BPHJlY3QgZmlsbD0iIzI2MTM2YyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg%3D%3D" data-src="assets/images/image02.jpg?v=5d7e5a3b" alt=""/>
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCA2MDAgNjAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI%2BPHJlY3QgZmlsbD0iIzI2MTM2YyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg%3D%3D" data-src="assets/images/commission_1.png?v=5d7e5a3b" alt=""/>
                                             </span>
                                         </div>
                                     </div>
                                     <div>
                                         <div id="image03" class="image-component instance-3" data-position="right">
                                             <span class="frame deferred">
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCA2MDAgNjAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI%2BPHJlY3QgZmlsbD0iIzFjMTc3NiIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg%3D%3D" data-src="assets/images/image03.jpg?v=5d7e5a3b" alt=""/>
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCA2MDAgNjAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI%2BPHJlY3QgZmlsbD0iIzFjMTc3NiIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg%3D%3D" data-src="assets/images/commission_2.png?v=5d7e5a3b" alt=""/>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        <p id="text04" class="text-component instance-4">For collabs &amp;art trades, you can dm me, I &#39;ll see if I &#39;m up for it</p>
+                        
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <div id="image03" class="image-component instance-3">
+                                            <span class="frame deferred">
+                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjAiIHk9IjAiIHZpZXdCb3g9IjAgMCA2MDAgNjAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI%2BPHJlY3QgZmlsbD0iIzE1MTU1ZiIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg%3D%3D" data-src="assets/images/commission_3.png?v=5d7e5a3b" alt=""/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <p id="text04" class="text-component instance-4">For collabs &amp; art trades, you can dm me, I &#39;ll see if I &#39;m up for it. I'm never the one asking for the favors because of the shyness.</p>
                         <ul id="buttons08" class="buttons-component instance-8">
                             <li>
                                 <a href="index.html" class="n01" role="button">
